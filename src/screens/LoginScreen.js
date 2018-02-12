@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import I18n from '../locales/i18n';
 
 export default class LoginScreen extends React.Component {
 
@@ -30,17 +31,17 @@ export default class LoginScreen extends React.Component {
       navigation.navigate('mainStack');
     }
     else {
-      Alert.alert('Error', 'Complete all the fields to login');
+      Alert.alert('Error', I18n.t('completeFields'));
     }
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{marginBottom: 10}}> Login Screen </Text>
+        <Text style={{marginBottom: 10}}> {I18n.t('loginScreenTitle')} </Text>
         <View style={{ height: 80 }}>
           <TextInput
-            placeholder="Enter your mail"
+            placeholder={I18n.t('enterEmail')}
             keyboardType="email-address"
             autoCapitalize="none"
             onChangeText={text => this.handleChange("mail", text)}
@@ -49,26 +50,26 @@ export default class LoginScreen extends React.Component {
         <View style={{ height: 80 }}>
           <TextInput
             secureTextEntry
-            placeholder="Enter your password"
+            placeholder={I18n.t('enterPassword')}
             onChangeText={text => this.handleChange("password", text)}
           />
         </View>
         <View style={styles.registerViewButton}>
           <Button
             onPress={this.doLogin}
-            title="Enter | Log In"
+            title={I18n.t('loginConfirm')}
           />
         </View>
         <View style={styles.registerViewButton}>
           <Button
             onPress={this.goToForgetPassword}
-            title="Forgot Password"
+            title={I18n.t('forgotPassword')}
           />
         </View>
         <View style={styles.registerViewButton}>
           <Button
             onPress={this.goToRegister}
-            title="Register"
+            title={I18n.t('register')}
           />
         </View>
       </View>
