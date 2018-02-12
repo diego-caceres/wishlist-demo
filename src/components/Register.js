@@ -9,7 +9,11 @@ export default class Register extends Component {
       lastName: "",
       mail: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
+      dummy1: "",
+      dummy2: "",
+      dummy3: "",
+      dummy4: ""
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -28,19 +32,19 @@ export default class Register extends Component {
   render() {
     return (
       <View style={{ flex: 1, padding: 10 }}>
-        <View style={{ flex: 1 }}>
+        <View style={{ height: 80 }}>
           <TextInput
             placeholder="Enter your name"
             onChangeText={text => this.handleChange("name", text)}
           />
         </View>
-        <View style={{ flex: 1 }}>
+        <View style={{ height: 80 }}>
           <TextInput
             placeholder="Enter your last name"
             onChangeText={text => this.handleChange("lastName", text)}
           />
         </View>
-        <View style={{ flex: 1 }}>
+        <View style={{ height: 80 }}>
           <TextInput
             placeholder="Enter your mail"
             keyboardType="email-address"
@@ -48,22 +52,50 @@ export default class Register extends Component {
             onChangeText={text => this.handleChange("mail", text)}
           />
         </View>
-        <View style={{ flex: 1 }}>
+        <View style={{ height: 80 }}>
           <TextInput
             secureTextEntry
             placeholder="Enter your password"
             onChangeText={text => this.handleChange("password", text)}
           />
         </View>
-        <View style={{ flex: 1 }}>
+        <View style={{ height: 80 }}>
           <TextInput
             secureTextEntry
             placeholder="Confirm your password"
             onChangeText={text => this.handleChange("confirmPassword", text)}
           />
         </View>
+        <View style={{ height: 80 }}>
+          <TextInput
+            placeholder="Enter your dummy field"
+            autoCapitalize="none"
+            onChangeText={text => this.handleChange("dummy1", text)}
+          />
+        </View>
+        <View style={{ height: 80 }}>
+          <TextInput
+            placeholder="Enter your dummy field"
+            autoCapitalize="none"
+            onChangeText={text => this.handleChange("dummy2", text)}
+          />
+        </View>
+        <View style={{ height: 80 }}>
+          <TextInput
+            placeholder="Enter your dummy field"
+            autoCapitalize="none"
+            onChangeText={text => this.handleChange("dummy3", text)}
+          />
+        </View>
+        <View style={{ height: 80 }}>
+          <TextInput
+            placeholder="Enter your dummy field"
+            autoCapitalize="none"
+            onChangeText={text => this.handleChange("dummy4", text)}
+          />
+        </View>
         <Button
-          style={{ flex: 1 }}
+          style={{ height: 80 }}
           onPress={this.handleClick}
           title="Confirm"
         />
