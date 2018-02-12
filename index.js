@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import App from './src/components/App';
+import Root from './src/components/Root';
 
-AppRegistry.registerComponent('wishlist_wip', () => App);
+AppRegistry.registerComponent('wishlist_wip', () => Root);

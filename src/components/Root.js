@@ -7,14 +7,13 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet,  Text, View } from 'react-native';
 
-import Register from './Register';
-import ProductsList from './ProductsList';
+import AppNavigation from '../navigation/AppNavigation';
 
-export default class App extends Component {
+export default class Root extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <ProductsList />
+        <AppNavigation />
       </View>
     );
   }
@@ -23,6 +22,6 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: Platform.OS === 'ios' ? 60 : 0,
+    // marginTop: Platform.OS === 'ios' ? 60 : 0,
   }
 });
