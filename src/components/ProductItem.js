@@ -17,7 +17,7 @@ const ProductItem = (props) => {
         <Image source={props.imageUrl ? {uri: props.imageUrl} : noImage} style={styles.icon} />
       </View>
       <View style={styles.textContainer}>
-        <Text style={styles.title}>{props.name}</Text>
+        <Text style={styles.title}>{props.name} </Text>
         <Text style={styles.price}>{props.price}</Text>
       </View>
       <View style={styles.heartContainer}>
