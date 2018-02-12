@@ -17,8 +17,8 @@ const ProductItem = (props) => {
         <Image source={props.imageUrl ? {uri: props.imageUrl} : noImage} style={styles.icon} />
       </View>
       <View style={styles.textContainer}>
-        <Text style={styles.title}>{props.name} </Text>
-        <Text style={styles.price}>{props.price}</Text>
+        <Text style={styles.title}>{props.title} </Text>
+        <Text style={styles.price}>{`${props.currency} ${props.maxSalePrice}`}</Text>
       </View>
       <View style={styles.heartContainer}>
         <TouchableOpacity onPress={props.onAddRemoveToWishList}>

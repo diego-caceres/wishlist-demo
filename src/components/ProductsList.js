@@ -8,7 +8,7 @@ export default class ProductsList extends React.Component {
   }
 
   renderRow = (item, index) => {
-    const indexItem = this.props.wishList.findIndex(p => p.id === item.id);
+    const indexItem = this.props.wishList.findIndex(p => p.mpid === item.mpid);
     return (
       <ProductItem 
         {...item} 

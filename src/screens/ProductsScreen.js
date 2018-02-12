@@ -1,32 +1,28 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet, TextInput, Alert } from 'react-native';
 
 import ProductsList from '../components/ProductsList';
+import Loader from '../components/Loader';
 
-
-const products = [
-  {id: 1, name: 'Product 1', price: '$100'},
-  {id: 2, name: 'Product 2', price: '$315'},
-  {id: 3, name: 'Product 3', price: '$115'},
-  {id: 4, name: 'Product 4', price: '$150'},
-  {id: 5, name: 'Product 5', price: '$225'}
-];
-
-const wishProducts = [
-  
-];
 
 export default class ProductsScreen extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      products: products, //[],
-      wishListProducts: wishProducts, //[],
+      loading: false,
+      search: '',
+      products: [],
+      wishListProducts: [],
       showWishList: false
     }
 
+    this.handleChange = this.handleChange.bind(this);
   }
+  handleChange(value) {
+    this.setState({ search: value});
+  }
+
   toggleShow = () => {
     this.setState({ showWishList: !this.state.showWishList });
   }
@@ -34,7 +30,7 @@ export default class ProductsScreen extends React.Component {
   addRemoveToWishList = (item) => {
     // debugger;
     let wishListCopy = [...this.state.wishListProducts];
-    const index = wishListCopy.findIndex(p => p.id === item.id);
+    const index = wishListCopy.findIndex(p => p.mpid === item.mpid);
     if(index === -1) {
       wishListCopy.push(item);
     }
@@ -52,6 +48,31 @@ export default class ProductsScreen extends React.Component {
     });
   }
 
+  refreshSearch = () => {
+    this.setState({ loading: true }, () => {
+      fetch(`https://api.indix.com/v2/summary/products?countryCode=US&q=${this.state.search}&app_key=PDMaH4iogfVzfNQHJAGmVr2dv0bAbKPO`)
+        .then((response) => response.json())
+        .then((responseJson) => {
+          console.log('Respuesta:', responseJson);
+          if(responseJson.message === 'ok') {
+            this.setState({
+              products: responseJson.result.products,
+              loading: false,
+              search: ''
+            });
+          }
+          else {
+            this.setState({ loading: false, error: responseJson.message });
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+          this.setState({ loading: false, error});
+          Alert.alert('An error has ocurred', error);
+        });
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -63,6 +84,18 @@ export default class ProductsScreen extends React.Component {
           </View>
         </View>
         <View style={{ flex: 1}}>
+          {!this.state.showWishList && 
+            <View style={{margin: 20}}>
+              <TextInput 
+                style={styles.input} 
+                value={this.state.search} 
+                onChangeText={this.handleChange}
+                placeholder="Enter text to search"
+              />
+              <Button 
+                onPress={this.refreshSearch}
+                title="Search"/>
+            </View>}
           <ProductsList 
             products={!this.state.showWishList ? this.state.products : this.state.wishListProducts}
             wishList={this.state.wishListProducts}
