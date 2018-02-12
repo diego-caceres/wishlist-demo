@@ -76,6 +76,7 @@ export default class ProductsScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        {this.state.loading && <Loader />}
         <View style={styles.buttonsContainer}>
           <View style={styles.switchButton}>
             <Button  
