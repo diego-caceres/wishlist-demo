@@ -13,11 +13,7 @@ const products = [
 ];
 
 const wishProducts = [
-  {id: 1, name: 'Wishlist Product 1', price: '$100'},
-  {id: 2, name: 'Wishlist Product 2', price: '$315'},
-  {id: 3, name: 'Wishlist Product 3', price: '$115'},
-  {id: 4, name: 'Wishlist Product 4', price: '$150'},
-  {id: 5, name: 'Wishlist Product 5', price: '$225'}
+  
 ];
 
 export default class ProductsScreen extends React.Component {
@@ -35,6 +31,27 @@ export default class ProductsScreen extends React.Component {
     this.setState({ showWishList: !this.state.showWishList });
   }
 
+  addRemoveToWishList = (item) => {
+    // debugger;
+    let wishListCopy = [...this.state.wishListProducts];
+    const index = wishListCopy.findIndex(p => p.id === item.id);
+    if(index === -1) {
+      wishListCopy.push(item);
+    }
+    else {
+      //Remove it
+      wishListCopy = [
+        ...this.state.wishListProducts.slice(0, index),
+        ...this.state.wishListProducts.slice(index + 1)
+      ];
+    }
+
+    this.setState({ 
+      wishListProducts: wishListCopy, 
+      products: [...this.state.products] 
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -48,7 +65,9 @@ export default class ProductsScreen extends React.Component {
         <View style={{ flex: 1}}>
           <ProductsList 
             products={!this.state.showWishList ? this.state.products : this.state.wishListProducts}
+            wishList={this.state.wishListProducts}
             listTitle={!this.state.showWishList ? 'Products' : 'WishList' }
+            onAddRemoveToWishList={this.addRemoveToWishList}
           />
         </View>
       </View>

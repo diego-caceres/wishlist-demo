@@ -8,10 +8,12 @@ export default class ProductsList extends React.Component {
   }
 
   renderRow = (item, index) => {
-    
+    const indexItem = this.props.wishList.findIndex(p => p.id === item.id);
     return (
       <ProductItem 
         {...item} 
+        isInWishList={indexItem !== -1}
+        onAddRemoveToWishList={() => this.props.onAddRemoveToWishList(item)}
       />
     );
   }

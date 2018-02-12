@@ -21,7 +21,7 @@ const ProductItem = (props) => {
         <Text style={styles.price}>{props.price}</Text>
       </View>
       <View style={styles.heartContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={props.onAddRemoveToWishList}>
           <Image 
             source={props.isInWishList ? heartFull : heart}
             style={styles.heart}
