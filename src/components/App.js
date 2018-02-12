@@ -8,12 +8,13 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet,  Text, View } from 'react-native';
 
 import Register from './Register';
+import ProductsList from './ProductsList';
 
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Register />
+        <ProductsList />
       </View>
     );
   }
