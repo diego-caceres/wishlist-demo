@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TextInput, Button, Alert } from "react-native";
+import { StyleSheet, Text, View, TextInput, Button, Alert, ScrollView } from "react-native";
 
 export default class Register extends Component {
   constructor(props) {
@@ -32,6 +32,7 @@ export default class Register extends Component {
   render() {
     return (
       <View style={{ flex: 1, padding: 10 }}>
+      <ScrollView>
         <View style={{ height: 80 }}>
           <TextInput
             placeholder="Enter your name"
@@ -99,6 +100,8 @@ export default class Register extends Component {
           onPress={this.handleClick}
           title="Confirm"
         />
+      </ScrollView>
+        
       </View>
     );
   }
