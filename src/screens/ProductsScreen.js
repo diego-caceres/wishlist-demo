@@ -84,6 +84,12 @@ export default class ProductsScreen extends React.Component {
         {this.state.loading && <Loader />}
         <View style={styles.buttonsContainer}>
           <View style={styles.switchButton}>
+            <Button
+              onPress={this.goToVideo}
+              title="Go to video"
+            />
+          </View>
+          <View style={styles.switchButton}>
             <Button  
               onPress={this.toggleShow}
               title={this.state.showWishList ? "Show Products" : "Show Wishlist"} />
