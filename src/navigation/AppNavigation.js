@@ -10,6 +10,7 @@ import ForgottenPasswordScreen from '../screens/ForgottenPasswordScreen';
 
 import HomeScreen from '../screens/HomeScreen';
 import ProductsScreen from '../screens/ProductsScreen';
+import VideoScreen from '../screens/VideoScreen';
 
 const NAVIGATION_OPTIONS_HEADERIMAGE = {
   headerTitleStyle: {
@@ -56,6 +57,10 @@ const MainStack = StackNavigator(
       screen: ProductsScreen,
       navigationOptions: { title: 'Products' }
     },
+    videoScreen: {
+      screen: VideoScreen,
+      navigationOptions: { title: 'Record your video' }
+    }
   },
   {
     headerMode: 'screen',

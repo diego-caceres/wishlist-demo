@@ -48,6 +48,11 @@ export default class ProductsScreen extends React.Component {
     });
   }
 
+  goToVideo = () => {
+    const { navigation } = this.props;
+    navigation.navigate('videoScreen');
+  }
+
   refreshSearch = () => {
     this.setState({ loading: true }, () => {
       fetch(`https://api.indix.com/v2/summary/products?countryCode=US&q=${this.state.search}&app_key=PDMaH4iogfVzfNQHJAGmVr2dv0bAbKPO`)
